@@ -68,7 +68,7 @@ public class CityList {
         cityList.add("lima");
         cityList.add("casablanca");
         cityList.add("capetown");
-        cityList.add("kairo");
+        cityList.add("cairo");
         cityList.add("athens");
         cityList.add("vancouver");
         cityList.add("seoul");
@@ -80,6 +80,9 @@ public class CityList {
         cityList.add("vienna");
         cityList.add("brussels");
         cityList.add("jerusalem");
+        cityList.add("budapest");
+        cityList.add("philadelphia");
+        cityList.add("phuket");
 
     }
 

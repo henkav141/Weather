@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         city = (TextView) findViewById(R.id.textCity);
         temp = (TextView) findViewById(R.id.textTemp);
         desc = (TextView) findViewById(R.id.textDesc);
-        imgView = (ImageView) findViewById(R.id.imgView);
+        imgView = (ImageView) findViewById(R.id.imageView);
         hum = (TextView) findViewById(R.id.hum);
         press = (TextView) findViewById(R.id.press);
         windSpeed = (TextView) findViewById(R.id.windSpeed);
@@ -55,7 +55,8 @@ public class MainActivity extends AppCompatActivity {
                 task.execute(new String[]{cityList.getRandomCity()});
             }
         });
-
+        JSONWeatherTask task = new JSONWeatherTask();
+        task.execute(new String[]{cityList.getRandomCity()});
     }
 
     private class JSONWeatherTask extends AsyncTask<String, Void, Weather> {
@@ -85,18 +86,18 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(Weather weather) {
             super.onPostExecute(weather);
 
-            if (weather.iconData != null && weather.iconData.length > 0) {
+             if (weather.iconData != null && weather.iconData.length > 0) {
                 Bitmap img = BitmapFactory.decodeByteArray(weather.iconData, 0, weather.iconData.length);
                 imgView.setImageBitmap(img);
             }
 
             city.setText(weather.location.getCity() + "," + weather.location.getCountry());
-            desc.setText(weather.currentCondition.getCondition() + "(" + weather.currentCondition.getDescr() + ")");
+            desc.setText( weather.currentCondition.getDescr());
             temp.setText("" + Math.round((weather.temperature.getTemp() - 273.15)) + " \u2103");
             hum.setText("Hum: "+"" + weather.currentCondition.getHumidity() + "%");
             press.setText("Press: "+"" + weather.currentCondition.getPressure() + " hPa");
             windSpeed.setText("Windespeed: "+"" + weather.wind.getSpeed() + " mps");
-            windDeg.setText("Winddeg: "+"" + weather.wind.getDeg() + "�");
+            windDeg.setText("Winddeg: "+"" + weather.wind.getDeg() + "\u21AF");
 
         }
     }

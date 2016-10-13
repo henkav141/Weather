@@ -59,6 +59,7 @@ public class JSONWeatherParser {
         // We download the icon to show
 
 
+
         return weather;
     }
 

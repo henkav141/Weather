@@ -38,7 +38,7 @@ public class Weather {
             this.condition = condition;
         }
         public String getDescr() {
-            return descr;
+            return descr.substring(0,1).toUpperCase()+descr.substring(1);
         }
         public void setDescr(String descr) {
             this.descr = descr;
