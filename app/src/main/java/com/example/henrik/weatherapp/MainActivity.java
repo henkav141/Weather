@@ -15,6 +15,7 @@ import com.example.henrik.weatherapp.Weather.Weather;
 import com.example.henrik.weatherapp.Weather.WeatherHttpClient;
 
 import org.json.JSONException;
+import org.w3c.dom.Text;
 
 import static android.R.attr.id;
 
@@ -25,6 +26,11 @@ public class MainActivity extends AppCompatActivity {
     private TextView desc;
     private ImageView imgView;
     private ImageView btnRandom;
+    private TextView hum;
+    private TextView press;
+    private TextView windSpeed;
+    private TextView windDeg;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +42,10 @@ public class MainActivity extends AppCompatActivity {
         temp = (TextView) findViewById(R.id.textTemp);
         desc = (TextView) findViewById(R.id.textDesc);
         imgView = (ImageView) findViewById(R.id.imgView);
+        hum = (TextView) findViewById(R.id.hum);
+        press = (TextView) findViewById(R.id.press);
+        windSpeed = (TextView) findViewById(R.id.windSpeed);
+        windDeg = (TextView) findViewById(R.id.windDeg);
         btnRandom = (ImageView) findViewById(R.id.btnRndm);
 
         btnRandom.setOnClickListener(new View.OnClickListener() {
@@ -46,8 +56,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //JSONWeatherTask task = new JSONWeatherTask();
-        //task.execute(new String[]{cit});
     }
 
     private class JSONWeatherTask extends AsyncTask<String, Void, Weather> {
@@ -85,10 +93,10 @@ public class MainActivity extends AppCompatActivity {
             city.setText(weather.location.getCity() + "," + weather.location.getCountry());
             desc.setText(weather.currentCondition.getCondition() + "(" + weather.currentCondition.getDescr() + ")");
             temp.setText("" + Math.round((weather.temperature.getTemp() - 273.15)) + " \u2103");
-           /* hum.setText("" + weather.currentCondition.getHumidity() + "%");
-            press.setText("" + weather.currentCondition.getPressure() + " hPa");
-            windSpeed.setText("" + weather.wind.getSpeed() + " mps");
-            windDeg.setText("" + weather.wind.getDeg() + "�");*/
+            hum.setText("Hum: "+"" + weather.currentCondition.getHumidity() + "%");
+            press.setText("Press: "+"" + weather.currentCondition.getPressure() + " hPa");
+            windSpeed.setText("Windespeed: "+"" + weather.wind.getSpeed() + " mps");
+            windDeg.setText("Winddeg: "+"" + weather.wind.getDeg() + "�");
 
         }
     }

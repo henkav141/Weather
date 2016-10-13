@@ -18,6 +18,15 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="23dp" />
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_add_circle_black_24dp"
+        android:layout_marginBottom="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/btnRndm" />
+
     <TextView
         android:text="TextView"
         android:layout_width="wrap_content"
@@ -26,8 +35,7 @@
         android:textSize="35dp"
         android:layout_below="@+id/textCity"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="37dp" />
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:text="TextView"
@@ -37,25 +45,56 @@
         android:textSize="25dp"
         android:layout_below="@+id/textTemp"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="55dp" />
+        android:layout_alignParentStart="true" />
 
-    <ImageView
+    <TextView
+        android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/ic_launcher"
-        android:id="@+id/imgView"
-        android:layout_alignBottom="@+id/textTemp"
+        android:id="@+id/windSpeed"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/press"
+        android:layout_alignStart="@+id/press" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/windDeg"
+        android:layout_marginLeft="17dp"
+        android:layout_marginStart="17dp"
+        android:layout_alignBaseline="@+id/windSpeed"
+        android:layout_alignBottom="@+id/windSpeed"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/hum"
+        android:layout_marginBottom="12dp"
+        android:layout_above="@+id/windDeg"
+        android:layout_alignLeft="@+id/windDeg"
+        android:layout_alignStart="@+id/windDeg" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/press"
+        android:layout_above="@+id/windDeg"
         android:layout_toRightOf="@+id/textCity"
-        android:layout_toEndOf="@+id/textCity" />
+        android:layout_toEndOf="@+id/textCity"
+        android:layout_marginBottom="14dp" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_add_circle_black_24dp"
-        android:layout_marginBottom="20dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/btnRndm" />
+        android:id="@+id/imgView"
+        app:srcCompat="@mipmap/ic_launcher"
+        android:layout_above="@+id/textDesc"
+        android:layout_toRightOf="@+id/press"
+        android:layout_toEndOf="@+id/press" />
 
 </RelativeLayout>
