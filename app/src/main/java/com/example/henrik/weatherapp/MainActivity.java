@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        String cit = "London,UK";
+        String cit = "Stockholm";
         city = (TextView) findViewById(R.id.textCity);
         temp = (TextView) findViewById(R.id.textTemp);
         desc = (TextView) findViewById(R.id.textDesc);
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                 weather = JSONWeatherParser.getWeather(data);
 
                 // Let's retrieve the icon
-                weather.iconData = ( (new WeatherHttpClient()).getImage(weather.currentCondition.getIcon()));
+                weather.iconData = ( (new WeatherHttpClient()).getImage("10d.png"));
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
             city.setText(weather.location.getCity() + "," + weather.location.getCountry());
             desc.setText(weather.currentCondition.getCondition() + "(" + weather.currentCondition.getDescr() + ")");
-            temp.setText("" + Math.round((weather.temperature.getTemp() - 273.15)) + "�C");
+            temp.setText("" + Math.round((weather.temperature.getTemp() - 273.15)) + " \u2103");
            /* hum.setText("" + weather.currentCondition.getHumidity() + "%");
             press.setText("" + weather.currentCondition.getPressure() + " hPa");
             windSpeed.setText("" + weather.wind.getSpeed() + " mps");

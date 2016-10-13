@@ -48,4 +48,14 @@
         android:layout_alignBottom="@+id/textTemp"
         android:layout_toRightOf="@+id/textCity"
         android:layout_toEndOf="@+id/textCity" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_add_circle_black_24dp"
+        android:id="@+id/imageView2"
+        android:layout_marginBottom="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>
