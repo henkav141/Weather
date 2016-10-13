@@ -5,14 +5,18 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.henrik.weatherapp.Weather.CityList;
 import com.example.henrik.weatherapp.Weather.JSONWeatherParser;
 import com.example.henrik.weatherapp.Weather.Weather;
 import com.example.henrik.weatherapp.Weather.WeatherHttpClient;
 
 import org.json.JSONException;
+
+import static android.R.attr.id;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,19 +24,30 @@ public class MainActivity extends AppCompatActivity {
     private TextView temp;
     private TextView desc;
     private ImageView imgView;
+    private ImageView btnRandom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        String cit = "Stockholm";
+        final CityList cityList = new CityList();
+        String cit = cityList.getRandomCity();
         city = (TextView) findViewById(R.id.textCity);
         temp = (TextView) findViewById(R.id.textTemp);
         desc = (TextView) findViewById(R.id.textDesc);
         imgView = (ImageView) findViewById(R.id.imgView);
+        btnRandom = (ImageView) findViewById(R.id.btnRndm);
 
-        JSONWeatherTask task = new JSONWeatherTask();
-        task.execute(new String[]{cit});
+        btnRandom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                JSONWeatherTask task = new JSONWeatherTask();
+                task.execute(new String[]{cityList.getRandomCity()});
+            }
+        });
+
+        //JSONWeatherTask task = new JSONWeatherTask();
+        //task.execute(new String[]{cit});
     }
 
     private class JSONWeatherTask extends AsyncTask<String, Void, Weather> {
@@ -46,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 weather = JSONWeatherParser.getWeather(data);
 
                 // Let's retrieve the icon
-                weather.iconData = ( (new WeatherHttpClient()).getImage("10d.png"));
+                weather.iconData = ( (new WeatherHttpClient()).getImage(weather.currentCondition.getIcon()));
 
             } catch (JSONException e) {
                 e.printStackTrace();
